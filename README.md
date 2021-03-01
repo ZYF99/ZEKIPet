@@ -2,16 +2,15 @@
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
-![Workflow result](https://github.com/ZYF99/<REPOSITORY>/workflows/Check/badge.svg)
+![Workflow result](https://github.com/ZYF99/ZEKIPet/workflows/Check/badge.svg)
 
 
 ## :scroll: Description
-<!--- Describe your app in one or two sentences -->
+A simple pet adoption platform built by jetpack compose with material design as its style.
 
 
 ## :bulb: Motivation and Context
-<!--- Optionally point readers to interesting parts of your submission. -->
-<!--- What are you especially proud of? -->
+The Design is simple and beautiful
 
 
 ## :camera_flash: Screenshots
