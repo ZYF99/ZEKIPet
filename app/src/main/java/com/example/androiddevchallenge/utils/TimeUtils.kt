@@ -1,7 +1,8 @@
 package com.example.androiddevchallenge.utils
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+
 
 //获取 年-月-日
 fun long2DateString(timeStamp: Long?): String {
