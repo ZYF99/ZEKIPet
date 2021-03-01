@@ -75,6 +75,3 @@ fun DarkPreview() {
         MyApp()
     }
 }
-
-
-

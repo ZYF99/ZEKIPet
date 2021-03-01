@@ -1,10 +1,25 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.page
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -32,7 +47,7 @@ import com.example.androiddevchallenge.model.Publisher
 import com.example.androiddevchallenge.utils.long2DateString
 
 @SuppressLint("StaticFieldLeak")
-private var navController:NavHostController? = null
+private var navController: NavHostController? = null
 
 @Composable
 fun buildHomepage(navControllerTmp: NavHostController) {
@@ -45,9 +60,11 @@ fun buildHomepage(navControllerTmp: NavHostController) {
         PetModel(System.currentTimeMillis(), "", "金毛", "一只活泼可爱的金毛，求带走！", publisher = publisher)
     val petList = listOf(petModel, petModel, petModel, petModel, petModel, petModel, petModel)
     Column {
-        TopAppBar(title = {
-            Text("宠物驿站")
-        })
+        TopAppBar(
+            title = {
+                Text("宠物驿站")
+            }
+        )
         MessageList(petList)
     }
 }
@@ -59,16 +76,17 @@ fun MessageList(petList: List<PetModel>) {
             petRow(pet)
         }
     }
-
 }
 
 @Composable
 fun petRow(petModel: PetModel) {
     Column(
         Modifier
-            .clickable(onClick = {
-                navController?.navigate("petDetailPage")
-            })
+            .clickable(
+                onClick = {
+                    navController?.navigate("petDetailPage")
+                }
+            )
             .padding(16.dp)
             .fillMaxWidth()
     ) {
