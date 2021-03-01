@@ -1,12 +1,14 @@
 package com.example.androiddevchallenge.page
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -76,10 +78,7 @@ fun buildDetail(petModel:PetModel) {
                         painter = painterResource(id = R.drawable.icon_avatar),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .width(36.dp)
-                            .height(36.dp)
-                            .clip(shape = RoundedCornerShape(50))
+                        modifier = Modifier.clip(shape = RoundedCornerShape(50))
                     )
                 }
             }

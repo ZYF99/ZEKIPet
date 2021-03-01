@@ -1,10 +1,13 @@
 package com.example.androiddevchallenge.page
 
 import android.annotation.SuppressLint
-import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,7 +24,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.R
@@ -82,10 +84,7 @@ fun petRow(petModel: PetModel) {
                         painter = painterResource(id = R.drawable.icon_avatar),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .width(36.dp)
-                            .height(36.dp)
-                            .clip(shape = RoundedCornerShape(50))
+                        modifier = Modifier.clip(shape = RoundedCornerShape(50))
                     )
                     Column(
                         verticalArrangement = Arrangement.Center,
