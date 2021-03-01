@@ -1,0 +1,119 @@
+package com.example.androiddevchallenge.page
+
+import android.annotation.SuppressLint
+import android.net.Uri
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
+import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.model.PetModel
+import com.example.androiddevchallenge.model.Publisher
+import com.example.androiddevchallenge.utils.long2DateString
+
+@SuppressLint("StaticFieldLeak")
+private var navController:NavHostController? = null
+
+@Composable
+fun buildHomepage(navControllerTmp: NavHostController) {
+    navController = navControllerTmp
+    val publisher = Publisher(
+        System.currentTimeMillis(),
+        "Android_ZEKI"
+    )
+    val petModel =
+        PetModel(System.currentTimeMillis(), "", "金毛", "一只活泼可爱的金毛，求带走！", publisher = publisher)
+    val petList = listOf(petModel, petModel, petModel, petModel, petModel, petModel, petModel)
+    Column {
+        TopAppBar(title = {
+            Text("宠物驿站")
+        })
+        MessageList(petList)
+    }
+}
+
+@Composable
+fun MessageList(petList: List<PetModel>) {
+    LazyColumn {
+        items(petList) { pet ->
+            petRow(pet)
+        }
+    }
+
+}
+
+@Composable
+fun petRow(petModel: PetModel) {
+    Column(
+        Modifier
+            .clickable(onClick = {
+                navController?.navigate("petDetailPage")
+            })
+            .padding(16.dp)
+            .fillMaxWidth()
+    ) {
+        Card(elevation = 4.dp) {
+            Column(
+                Modifier
+                    .padding(Dp(16f))
+                    .fillMaxWidth()
+            ) {
+                Row {
+                    Modifier.padding(16.dp)
+                    Image(
+                        painter = painterResource(id = R.drawable.icon_avatar),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .width(36.dp)
+                            .height(36.dp)
+                            .clip(shape = RoundedCornerShape(50))
+                    )
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(start = 12.dp)
+                    ) {
+                        Text(
+                            text = petModel.publisher?.name ?: "",
+                            fontSize = 14.sp,
+                            style = TextStyle(fontWeight = FontWeight.Bold)
+                        )
+                        Text(text = long2DateString(petModel.time), fontSize = 10.sp)
+                    }
+                }
+                Card(
+                    elevation = 2.dp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp)
+                        .padding()
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.pic_dog),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                Text(text = petModel.description ?: "", modifier = Modifier.padding(12.dp))
+            }
+        }
+    }
+}
